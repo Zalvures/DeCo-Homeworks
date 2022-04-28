@@ -1,0 +1,8 @@
+{
+    val refundtime = blockchainSim.getHeight + 720                       //approx 24 hours of block time
+    val authorpk: SigmaProp = PK(SELF.R4[Coll[Byte]].get)                // hopefully gets correct PK from R4
+    val buyerpk: SigmaProp = PK(SELF.R5[Coll[Byte]].get)                 // hopefully gets correct PK from R5
+    val tokenisreturned =                                                //idk i need some way to verify the token was returned to outputs(1)
+    val heldpurchase = (buyerpk && tokenisreturned && HEIGHT < refundtime) || (authorpk && HEIGHT > refundtime)
+    sigmaProp(heldpurchase)
+}
